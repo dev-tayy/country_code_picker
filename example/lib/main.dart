@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             CountryCodePicker(
               initialSelection: 'NG',
-              showModal: true,
+              view: CountryCodePickerView.fullscreen,
               onChanged: (code) {},
             ),
           ],

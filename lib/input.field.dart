@@ -21,6 +21,9 @@ class InputField extends StatelessWidget {
     this.formatters,
     this.autofocus = true,
     this.focusNode,
+    this.textfieldDecoration,
+    this.cursorColor = PRYCOLOUR,
+    this.style,
   }) : super(key: key);
 
   final TextEditingController controller;
@@ -35,6 +38,9 @@ class InputField extends StatelessWidget {
   final String? label;
   final Widget? prefix, suffix;
   final FocusNode? focusNode;
+  final InputDecoration? textfieldDecoration;
+  final Color cursorColor;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
@@ -50,59 +56,61 @@ class InputField extends StatelessWidget {
         onChanged: onChanged,
         obscureText: obscureText,
         validator: validator,
-        style: GoogleFonts.inter(
-          fontSize: getScreenHeight(16),
-          fontWeight: FontWeight.w400,
-          color: PRYCOLOUR,
-        ),
-        cursorColor: PRYCOLOUR,
+        style: style ??
+            GoogleFonts.inter(
+              fontSize: getScreenHeight(16),
+              fontWeight: FontWeight.w400,
+              color: PRYCOLOUR,
+            ),
+        cursorColor: cursorColor,
         cursorHeight: getScreenHeight(16),
         cursorWidth: 1.5,
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(
-            right: getScreenWidth(12),
-            left: getScreenWidth(30),
-            top: getScreenHeight(20),
-            bottom: getScreenHeight(20),
-          ),
-          isDense: true,
-          hintText: hint,
-          fillColor: const Color(0xFFF8FAFD),
-          filled: true,
-          errorStyle: TextStyle(
-            fontSize: getScreenHeight(14),
-            fontWeight: FontWeight.w400,
-            color: Colors.red,
-          ),
-          prefixIcon: prefix,
-          suffixIcon: suffix,
-          prefixIconConstraints: const BoxConstraints(),
-          hintStyle: GoogleFonts.inter(
-            fontSize: getScreenHeight(16),
-            fontWeight: FontWeight.w400,
-            color: const Color(0xFF8E8E93),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Color(0xFFE7ECF3)),
-            borderRadius: BorderRadius.circular(getScreenWidth(8)),
-            gapPadding: 0,
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: PRYCOLOUR),
-            borderRadius: BorderRadius.circular(getScreenWidth(8)),
-            gapPadding: 0,
-          ),
-          focusedErrorBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Color(0xFFFF3B30)),
-            borderRadius: BorderRadius.circular(getScreenWidth(8)),
-            gapPadding: 0,
-          ),
-          errorBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Color(0xFFFF3B30)),
-            borderRadius: BorderRadius.circular(getScreenWidth(8)),
-            gapPadding: 0,
-          ),
-        ),
+        decoration: textfieldDecoration ??
+            InputDecoration(
+              contentPadding: EdgeInsets.only(
+                right: getScreenWidth(12),
+                left: getScreenWidth(30),
+                top: getScreenHeight(20),
+                bottom: getScreenHeight(20),
+              ),
+              isDense: true,
+              hintText: hint,
+              fillColor: const Color(0xFFF8FAFD),
+              filled: true,
+              errorStyle: TextStyle(
+                fontSize: getScreenHeight(14),
+                fontWeight: FontWeight.w400,
+                color: Colors.red,
+              ),
+              prefixIcon: prefix,
+              suffixIcon: suffix,
+              prefixIconConstraints: const BoxConstraints(),
+              hintStyle: GoogleFonts.inter(
+                fontSize: getScreenHeight(16),
+                fontWeight: FontWeight.w400,
+                color: const Color(0xFF8E8E93),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: const BorderSide(color: Color(0xFFE7ECF3)),
+                borderRadius: BorderRadius.circular(getScreenWidth(8)),
+                gapPadding: 0,
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: const BorderSide(color: PRYCOLOUR),
+                borderRadius: BorderRadius.circular(getScreenWidth(8)),
+                gapPadding: 0,
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderSide: const BorderSide(color: Color(0xFFFF3B30)),
+                borderRadius: BorderRadius.circular(getScreenWidth(8)),
+                gapPadding: 0,
+              ),
+              errorBorder: OutlineInputBorder(
+                borderSide: const BorderSide(color: Color(0xFFFF3B30)),
+                borderRadius: BorderRadius.circular(getScreenWidth(8)),
+                gapPadding: 0,
+              ),
+            ),
       ),
     );
   }
